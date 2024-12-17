@@ -1736,6 +1736,28 @@ background-color: transparent;
     overflow: hidden;
   }
 
+  .socialMediaContainer ul{
+    /* background-color: red; */
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .socialMediaContainer ul a {
+    /* background-color: red; */
+    display: flex;
+    justify-content: space-evenly;
+    cursor: pointer;
+  }
+
+  .socialMediaContainer ul a {
+    /* color: red; */
+  }
+
+  .socialIcon {
+    /* color: green; */
+    fill: white;
+  }
+
   @media screen and (min-width: 1200px) {
     .contactUsContainer {
         /* width: 95%; */
@@ -1778,6 +1800,10 @@ background-color: transparent;
         margin-bottom: 50px !important; 
     }
 
+    .contactList li a {
+        color: black;
+    }
+
     .contactList span {
         display: block;
         margin: auto;
@@ -1808,6 +1834,20 @@ background-color: transparent;
         /* background-color: green; */
         margin-bottom: 15px;
     }
+
+    .socialIcon {
+        /* color: green; */
+        fill: black;
+      }
+
+      .instagramShape {
+        fill: white
+      }
+
+      .socialMediaContainer  {
+        /* background-color: red; */
+        width: 30%;
+      }
 
   }
  
