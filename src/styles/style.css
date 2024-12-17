@@ -1734,6 +1734,11 @@ background-color: transparent;
     margin: 0 auto;
     border-radius: 5px;
     overflow: hidden;
+    
+  }
+
+  .contactMapSection iframe {
+    height: 100%;
   }
 
   .socialMediaContainer ul{
@@ -1814,27 +1819,6 @@ background-color: transparent;
     }
 
     
-
-    .contactForm {
-        /* backfground-color: red; */
-        gap: 0;
-    }
-
-    .contactFormSection form div {
-        /* background-color: red; */
-        gap: 0px;
-    }
-
-    .contactFormSection form div{
-        /* background-color: red; */
-        flex-direction: column;
-    }
-
-    .contactFormSection form div input {
-        /* background-color: green; */
-        margin-bottom: 15px;
-    }
-
     .socialIcon {
         /* color: green; */
         fill: black;
@@ -1848,6 +1832,8 @@ background-color: transparent;
         /* background-color: red; */
         width: 30%;
       }
+
+      
 
   }
  
