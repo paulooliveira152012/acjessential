@@ -14,6 +14,7 @@ import oilPressureGauge from "../assets/images/equipment/Oil pressure gauge Set.
 import vaccumPumpTest from "../assets/images/equipment/Vacuum pump test kit.png";
 import brakeServiceMachine from "../assets/images/equipment/Brake services machine.png";
 import acChargeMachineR1234yf from "../assets/images/equipment/AC charge machine R1234yf.png";
+import exhaustWeldingMachine from "../assets/images/equipment/Exhaust welding machine titanium.png"
 import acChargeMachineR134 from "../assets/images/equipment/AC Charge machine R-134.png";
 import nitrogenleaktest from "../assets/images/equipment/nitrogenleaktest.png";
 import lyft from "../assets/images/machine.png";
@@ -83,7 +84,7 @@ const OurServices = () => {
       description:
         "Inspection and repair of the exhaust system to reduce emissions, improve fuel efficiency, and eliminate leaks.",
       equipment: ["Exhaust Pressure Testing Kit"],
-      image: nitrogenleaktest,
+      image: exhaustWeldingMachine,
     },
     {
       name: "Clutch Services",
