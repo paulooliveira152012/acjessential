@@ -89,7 +89,7 @@ const ContactUs = () => {
                 <ul>
                   <li>
                     <a
-                      href="https://www.instagram.com"
+                      href="https://www.instagram.com/autorepairacj?igsh=NTBkNzlrYWxvcmto"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -98,7 +98,7 @@ const ContactUs = () => {
                   </li>
                   <li>
                     <a
-                      href="https://www.facebook.com"
+                      href="https://www.facebook.com/p/ACJ-Auto-Repair-61570440825296/"
                       target="_blank"
                       rel="noopener noreferrer"
                     >

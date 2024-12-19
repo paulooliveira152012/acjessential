@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from "react-route
 import Home from "../pages/HomePage";
 import About from "../pages/About.js";
 import OurServices from "../pages/OurServices.js";
-import TipsAndAdvice from "../pages/TipsAndAdvice";
 import ContactUs from "../pages/ContactUs.js";
 import AdmLogin from "../pages/AdmLogin.js";
 import Calendar from "../pages/Calendar.js";
@@ -33,7 +32,6 @@ const ContentWithFooter = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/our-services" element={<OurServices />} />
-                    <Route path="/tips-and-advice" element={<TipsAndAdvice />} />
                     <Route path="/contact-us" element={<ContactUs />} />
                     <Route path="/admLogin" element={<AdmLogin />} />
                     <Route path="/calendar" element={<Calendar />} />
