@@ -82,7 +82,6 @@ const Footer = () => {
           </li>
         </div>
       </div>
-      <div></div>
       <div className="divLine"></div>
       <p>&copy; {currentYear} ACJ Auto Repair. All rights reserved.</p>
     </div>
