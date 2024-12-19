@@ -894,6 +894,18 @@ a {
     font-size: 13px;
 }
 
+.footer .socialMediaIconContainer {
+    /* background-color: red; */
+    width: 15%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer .socialIconFooter {
+    fill: white;
+    cursor: pointer;
+}
+
 .footerContent {
     /* background-color: green; */
     display: flex;
