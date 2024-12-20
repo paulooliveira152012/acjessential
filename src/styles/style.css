@@ -1308,7 +1308,7 @@ cursor: pointer;
 
 
 .contentContainer .teamPicture {
-    background-image: url('../assets/images/teamPlaceholder.jpg');
+    background-image: url('../assets/images/aboutUsImage.png');
     height: 50vh;
     width: 100%;
     margin: auto;
