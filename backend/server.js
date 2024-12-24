@@ -11,6 +11,9 @@ const adminRouter = require('./routes/adm');
 // Import cors
 const cors = require('cors');
 
+// serve frontend
+const path = require('path')
+
 // Implement express
 const app = express();
 
@@ -30,6 +33,18 @@ mongoose
 app.use('/api/appointments', appointmentRouter);
 app.use('/api/admin', adminRouter); // Routes for admin login
 app.get('/', (req, res) => res.send('Welcome to the Mechanic Shop API'));
+
+// serve static files in production
+if(process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "../build")))
+
+    // handle all other requests by serving the React frontend
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, "../buld", "index.html"))
+    })
+} else {
+    app.get("/", (req, res) => res.send("Wasn't able to find serving files"));
+}
 
 // Start the server
 const PORT = process.env.PORT || 5001;

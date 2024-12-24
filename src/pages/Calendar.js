@@ -29,6 +29,14 @@ const CalendarPage = () => {
 
   const adminPassword = "12345"; // Replace with your actual password logic
 
+  const getApiUrl = (endpoint) => {
+    const baseUrl = 
+    process.env.NODE_ENV === "production"
+    ? process.env.REACT_APP_API_URL
+    : "http://localhost:5001";
+    return `${baseUrl}${endpoint}`
+  }
+
   const handleOpenPasswordModal = (id) => {
     setEditAppointmentId(id); // Save the ID of the appointment being edited
     setIsPasswordModalVisible(true); // Show the password modal
@@ -82,10 +90,10 @@ const CalendarPage = () => {
   // Fetch all appointments when the component mounts
   useEffect(() => {
     const fetchAllAppointments = async () => {
+      const api = getApiUrl("/api/appointments/all")
+
       try {
-        const response = await axios.get(
-          "http://localhost:5001/api/appointments/all"
-        );
+        const response = await axios.get(api);
         console.log("Fetched appointments from backend:", response.data);
         setAppointments(response.data); // Store all appointments
       } catch (err) {
@@ -101,11 +109,10 @@ const CalendarPage = () => {
     if (!selectedDate) return; // Avoid fetching until a date is selected
 
     const fetchDailyAppointments = async () => {
+      const api = getApiUrl("/api/appointments/all")
       try {
         const date = selectedDate.toISOString().split("T")[0]; // Format as YYYY-MM-DD
-        const response = await axios.get(
-          `http://localhost:5001/api/appointments/all`
-        );
+        const response = await axios.get(api);
         console.log("Fetched appointments from backend:", response.data);
 
         // Filter appointments for the selected date
@@ -203,17 +210,13 @@ const CalendarPage = () => {
           return;
         }
         console.log("Editing appointment with ID:", id);
-
-        const response = await axios.put(
-          `http://localhost:5001/api/appointments/edit/${id}`,
-          data
-        );
+        
+        const api = getApiUrl(`/api/appointments/edit/${id}`)
+        const response = await axios.put(api, data);
         alert("Appointment updated successfully!");
       } else {
-        const response = await axios.post(
-          "http://localhost:5001/api/appointments/newAppointment",
-          data
-        );
+        const api = getApiUrl("/api/appointments/newAppointment")
+        const response = await axios.post( api, data );
         alert("Appointment saved successfully!");
       }
 
@@ -230,7 +233,7 @@ const CalendarPage = () => {
 
       // Refresh appointments
       const refreshedAppointments = await axios.get(
-        "http://localhost:5001/api/appointments/all"
+        getApiUrl("/api/appointments/all")
       );
       setAppointments(refreshedAppointments.data);
     } catch (err) {
@@ -292,26 +295,17 @@ const CalendarPage = () => {
       // Log the appointment ID for debugging
       console.log("Canceling appointment:", id);
 
-      // Define the API endpoint for canceling the appointment
-      const response = await fetch(
-        `http://localhost:5001/api/appointments/cancel/${id}`,
-        {
-          method: "DELETE", // or "PUT" if you want to mark it as canceled instead of deleting
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const api = getApiUrl(`/api/appointments/cancel/${id}`);
+      const response = await axios.delete(api);
 
       if (!response.ok) {
         throw new Error(`Error: ${response.status} ${response.statusText}`);
       }
 
-      const data = await response.json();
-
       // Log success message
       console.log("Appointment canceled successfully:", data);
 
+      const data = await response.json();
       // Optionally update the UI or state
       // For example, remove the appointment from a list
       setAppointments((prevAppointments) =>
@@ -322,7 +316,6 @@ const CalendarPage = () => {
       console.error("Failed to cancel appointment:", error);
     }
   };
-
 
 
   const toggleAppointmentDetails = (id, ref) => {

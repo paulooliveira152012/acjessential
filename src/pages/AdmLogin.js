@@ -12,18 +12,26 @@ const AdmLogin = () => {
   const [showSupportMessage, setShowSupportMessage] = useState(false); // State for the support message
   const navigate = useNavigate();
 
+  const getApiUri = (endpoint) => {
+    const baseUrl = 
+    process.env.NODE_ENV === "production"
+    ? process.env.REACT_APP_API_URL
+    : "http://localhost:5001"
+    return `${baseUrl}${endpoint}`;
+  }
+
   const handleLogin = async (event) => {
     event.preventDefault();
     setError(""); // Clear previous errors
 
+    const api = getApiUri("/api/admin/login")
+
     try {
       const response = await axios.post(
-        "http://localhost:5001/api/admin/login",
-        {
+        api, {
           username,
           password,
-        }
-      );
+        });
 
       const { token } = response.data;
       console.log("Login successful, token:", token);
