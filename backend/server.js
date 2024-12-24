@@ -1,25 +1,25 @@
-// Import express, the framework for server and API's requests 
-const express = require('express');
+// Import express, the framework for server and API's requests
+const express = require("express");
 // Import mongoose
 const mongoose = require("mongoose");
 // Import dotenv to use environment variables
-require('dotenv').config();
+require("dotenv").config();
 // Import router
-const appointmentRouter = require('./routes/appointments');
-const adminRouter = require('./routes/adm');
+const appointmentRouter = require("./routes/appointments");
+const adminRouter = require("./routes/adm");
 
 // Import cors
-const cors = require('cors');
+const cors = require("cors");
 
 // serve frontend
-const path = require('path')
+const path = require("path");
 
 // Implement express
 const app = express();
 
 // Allow CORS
 app.use(cors());
-console.log('CORS is enabled');
+console.log("CORS is enabled");
 
 // Use express
 app.use(express.json());
@@ -30,19 +30,19 @@ mongoose
   .then(() => console.log("Connected to MongoDb"))
   .catch((err) => console.log("Error connecting to MongoDB:", err));
 
-app.use('/api/appointments', appointmentRouter);
-app.use('/api/admin', adminRouter); // Routes for admin login
+app.use("/api/appointments", appointmentRouter);
+app.use("/api/admin", adminRouter); // Routes for admin login
 
 // serve static files in production
-if(process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "../build")))
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../build")));
 
-    // handle all other requests by serving the React frontend
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, "../buld", "index.html"))
-    })
+  // handle all other requests by serving the React frontend
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../buld", "index.html"));
+  });
 } else {
-    app.get("/", (req, res) => res.send("Wasn't able to find serving files"));
+  app.get("/", (req, res) => res.send("Wasn't able to find serving files"));
 }
 
 // Start the server
