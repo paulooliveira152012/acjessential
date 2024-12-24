@@ -39,7 +39,7 @@ if (process.env.NODE_ENV === "production") {
 
   // handle all other requests by serving the React frontend
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../buld", "index.html"));
+    res.sendFile(path.join(__dirname, "../build", "index.html"));
   });
 } else {
   app.get("/", (req, res) => res.send("Wasn't able to find serving files"));
