@@ -26,13 +26,12 @@ app.use(express.json());
 
 // MongoConnection
 mongoose
-    .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('Connected to MongoDb'))
-    .catch((err) => console.log('Error connecting to MongoDB:', err));
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("Connected to MongoDb"))
+  .catch((err) => console.log("Error connecting to MongoDB:", err));
 
 app.use('/api/appointments', appointmentRouter);
 app.use('/api/admin', adminRouter); // Routes for admin login
-app.get('/', (req, res) => res.send('Welcome to the Mechanic Shop API'));
 
 // serve static files in production
 if(process.env.NODE_ENV === "production") {
