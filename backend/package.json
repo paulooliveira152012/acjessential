@@ -21,11 +21,11 @@
     "nodemailer": "^6.9.16"
   },
   "description": "",
-"engines": {
-  "node": "16.x",
-  "npm": "8.x"
-}
-
-
-
+  "engines": {
+    "node": "16.x",
+    "npm": "8.x"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+  }
 }
