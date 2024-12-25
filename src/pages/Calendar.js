@@ -26,6 +26,7 @@ const CalendarPage = () => {
   // displaying passwordModal
   const [enteredPassword, setEnteredPassword] = useState("");
   const [editAppointmentId, setEditAppointmentId] = useState(null);
+  const [cancelingAppointmentId, setCancelingAppointmentId] = useState(null); // Track appointment for cancellation
 
   const adminPassword = "12345"; // Replace with your actual password logic
 
@@ -46,10 +47,42 @@ const CalendarPage = () => {
     if (enteredPassword === adminPassword) {
       setIsPasswordModalVisible(false); // Close the modal
       setEnteredPassword(""); // Clear the password field
-      proceedToEditAppointment(editAppointmentId); // Proceed with editing
+  
+      if (cancelingAppointmentId) {
+        proceedToCancelAppointment(cancelingAppointmentId); // Proceed with cancellation
+        setCancelingAppointmentId(null); // Reset cancellation context
+      } else if (editAppointmentId) {
+        proceedToEditAppointment(editAppointmentId); // Proceed with editing
+      }
     } else {
       alert("Incorrect password. Access denied.");
       setEnteredPassword(""); // Clear the input
+    }
+  };
+
+  const proceedToCancelAppointment = async (id) => {
+    try {
+      console.log("Canceling appointment:", id);
+  
+      const api = getApiUrl(`/api/appointments/cancel/${id}`);
+      const response = await axios.delete(api);
+  
+      console.log("Appointment canceled successfully:", response.data);
+  
+      // Update state to remove the canceled appointment
+      setAppointments((prevAppointments) =>
+        prevAppointments.filter((appointment) => appointment._id !== id)
+      );
+  
+      // Update dailyAppointments as well
+      setDailyAppointments((prevDailyAppointments) =>
+        prevDailyAppointments.filter((appointment) => appointment._id !== id)
+      );
+  
+      alert("Appointment canceled successfully!");
+    } catch (error) {
+      console.error("Failed to cancel appointment:", error);
+      alert("Failed to cancel the appointment. Please try again.");
     }
   };
 
@@ -292,30 +325,30 @@ const CalendarPage = () => {
 
   const cancelAppointment = async (id) => {
     try {
-      // Log the appointment ID for debugging
       console.log("Canceling appointment:", id);
-
+  
       const api = getApiUrl(`/api/appointments/cancel/${id}`);
       const response = await axios.delete(api);
-
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status} ${response.statusText}`);
-      }
-
-      // Log success message
-      console.log("Appointment canceled successfully:", data);
-
-      const data = await response.json();
-      // Optionally update the UI or state
-      // For example, remove the appointment from a list
+  
+      console.log("Appointment canceled successfully:", response.data);
+  
+      // Update state to remove the canceled appointment
       setAppointments((prevAppointments) =>
         prevAppointments.filter((appointment) => appointment._id !== id)
       );
+  
+      // If you want to update dailyAppointments as well:
+      setDailyAppointments((prevDailyAppointments) =>
+        prevDailyAppointments.filter((appointment) => appointment._id !== id)
+      );
+  
+      alert("Appointment canceled successfully!");
     } catch (error) {
-      // Log error
       console.error("Failed to cancel appointment:", error);
+      alert("Failed to cancel the appointment. Please try again.");
     }
   };
+  
 
 
   const toggleAppointmentDetails = (id, ref) => {
@@ -339,6 +372,12 @@ const CalendarPage = () => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
+
+
+  const handleCancelPasswordModal = (id) => {
+    setCancelingAppointmentId(id); // Save the ID of the appointment being canceled
+    setIsPasswordModalVisible(true); // Show the password modal
+  };
 
   return (
       <div
@@ -472,7 +511,7 @@ const CalendarPage = () => {
                             Edit
                           </button>
                           <button
-                            onClick={() => cancelAppointment(appointment._id)}
+                            onClick={() => handleCancelPasswordModal(appointment._id)}
                             className="cancelButton"
                           >
                             Cancel
