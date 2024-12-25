@@ -11,10 +11,23 @@ const adminRouter = require("./routes/adm");
 // Import cors
 const cors = require("cors");
 
+const allowedOrigins = [
+  "https://acjessential-a07ou6a0j-paulo-oliveiras-projects-d0079d90.vercel.app",
+  // this is the one activily serving
+  "https://acjbasic-c0c6f4c898a8.herokuapp.com",
+  "https://acjbasic-c38b14927499.herokuapp.com"
+];
+
 const corsOptions = {
-  origin: "*", // Allows all origins
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true); // Allow the request
+    } else {
+      callback(new Error("Not allowed by CORS")); // Reject the request
+    }
+  },
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  preflightContinue: false,
+  credentials: true, // Allow cookies or other credentials
   optionsSuccessStatus: 204,
 };
 
@@ -27,6 +40,9 @@ const app = express();
 // Allow CORS
 app.use(cors(corsOptions));
 console.log("CORS is enabled");
+
+app.options("*", cors(corsOptions)); // Enable preflight requests
+
 
 // Use express
 app.use(express.json());
