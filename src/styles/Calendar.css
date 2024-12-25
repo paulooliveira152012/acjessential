@@ -23,6 +23,11 @@
   height: 100vh;
 }
 
+.calendar-page.modal-open {
+  height: 100vh; /* Temporarily set full screen height */
+  overflow: hidden; /* Prevent scrolling */
+}
+
 .titleSessionCalendar {
   text-align: center;
 }
@@ -484,6 +489,8 @@
   width: 100%;
   max-width: 1000px;
   margin: auto;
+  /* overflow-y: auto !important; */
+  height: 50vh;
 }
 
 .enterPassword {
@@ -645,7 +652,7 @@ form input {
   top: 1%;
   /* background-color: red; */
   float: right;
-  color: white;
+  color: black;
   font-size: 25px;
   cursor: pointer;
 }
@@ -665,4 +672,27 @@ form button {
   margin: auto;
   padding: 20px;
   /* border-radius: 10px; */
+}
+
+
+@media screen and (max-width: 1000px) {
+  .calendar-page {
+    height: auto;
+  }
+
+  .calendarContainer {
+    height: 100%;
+  }
+
+  .infoParentContainer {
+    height: 100%;
+    /* background-color: pink; */
+    overflow-y: auto;
+  }
+
+  .infoChildContainer {
+    height: 90%;
+    /* background-color: red; */
+    overflow-y: auto;
+  }
 }

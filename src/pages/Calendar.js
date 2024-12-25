@@ -341,7 +341,13 @@ const CalendarPage = () => {
   }, []);
 
   return (
-    <div className="calendar-page">
+      <div
+    className={`calendar-page ${
+      isFormVisible || isScheduleVisible || isEditFormVisible
+        ? "modal-open"
+        : ""
+    }`}
+  >
       <h1>Schedule Your Car Drop-Off</h1>
       <div className="calendarContainer">
         <Calendar
