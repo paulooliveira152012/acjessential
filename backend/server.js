@@ -11,6 +11,13 @@ const adminRouter = require("./routes/adm");
 // Import cors
 const cors = require("cors");
 
+const corsOptions = {
+  origin: "*", // Allows all origins
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+};
+
 // serve frontend
 const path = require("path");
 
@@ -18,7 +25,7 @@ const path = require("path");
 const app = express();
 
 // Allow CORS
-app.use(cors());
+app.use(cors(corsOptions));
 console.log("CORS is enabled");
 
 // Use express
