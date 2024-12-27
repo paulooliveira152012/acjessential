@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 // Import router
 const appointmentRouter = require("./routes/appointments");
-const adminRouter = require("../backend/routes/adm");
+const adminRouter = require("./routes/adm");
 
 // Import cors
 const cors = require("cors");
@@ -15,7 +15,7 @@ const allowedOrigins = [
   "https://acjessential-a07ou6a0j-paulo-oliveiras-projects-d0079d90.vercel.app",
   // this is the one activily serving
   "http://localhost:3000",
-  "*"
+  "*",
 ];
 
 const corsOptions = {
@@ -42,7 +42,6 @@ app.use(cors(corsOptions));
 console.log("CORS is enabled");
 
 app.options("*", cors(corsOptions)); // Enable preflight requests
-
 
 // Use express
 app.use(express.json());

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Staff = require("../../backend/schemas/Staff"); // Import Staff model
+const Staff = require("../schemas/Staff"); // Import Staff model
 const bcrypt = require("bcryptjs"); // Temporarily commenting out bcrypt
 const jwt = require("jsonwebtoken"); // For generating authentication tokens
 

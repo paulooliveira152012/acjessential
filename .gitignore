@@ -7,6 +7,10 @@
 .pnp.js
 
 /backend/.env
+/api/.env
+/api/node_modules
+/api/Procfile
+/api/notes.txt
 
 # testing
 /coverage
