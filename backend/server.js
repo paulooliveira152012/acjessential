@@ -14,7 +14,8 @@ const cors = require("cors");
 const allowedOrigins = [
   "https://acjessential-a07ou6a0j-paulo-oliveiras-projects-d0079d90.vercel.app",
   // this is the one activily serving
-  "http://localhost:3000"
+  "http://localhost:3000",
+  "*"
 ];
 
 const corsOptions = {
