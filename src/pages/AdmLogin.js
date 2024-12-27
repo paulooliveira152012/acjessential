@@ -13,13 +13,15 @@ const AdmLogin = () => {
   const navigate = useNavigate();
 
   const getApiUri = (endpoint) => {
-    const baseUrl = 
-    process.env.NODE_ENV === "production"
-    ? process.env.REACT_APP_API_URL
-    : "http://localhost:5001"
-     // Remove any trailing slash from the baseUrl and leading slash from the endpoint
-  return `${baseUrl.replace(/\/+$/, "")}/${endpoint.replace(/^\/+/, "")}`;
-  }
+    const baseUrl =
+      process.env.NODE_ENV === "production"
+        ? process.env.REACT_APP_API_URL
+        : "http://localhost:5001";
+  
+    // Remove any trailing slashes from baseUrl and leading slashes from endpoint
+    return `${baseUrl.replace(/\/+$/, "")}/${endpoint.replace(/^\/+/, "")}`;
+  };
+  
 
   const handleLogin = async (event) => {
     event.preventDefault();
