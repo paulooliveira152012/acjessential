@@ -18,25 +18,40 @@ import exhaustWeldingMachine from "../assets/images/equipment/Exhaust welding ma
 import acChargeMachineR134 from "../assets/images/equipment/AC Charge machine R-134.png";
 import nitrogenleaktest from "../assets/images/equipment/nitrogenleaktest.png";
 import lyft from "../assets/images/machine.png";
+import wheelBalancing from "../assets/images/equipment/wheelBalancing.jpg"
+import scanningDiagnosticTool from "../assets/images/equipment/scanningDiagnostic.png"
+import DiagnosticMobileWorkcenter from "../assets/images/equipment/DiagnosticMobileWorkcenter.png"
+
 
 const OurServices = () => {
   const navigate = useNavigate();
 
   const services = [
     {
-      name: "Engine Repair",
+      name: "Overall Electric Inspection",
       description:
-        "Comprehensive diagnostics and expert repairs to restore your engine's performance.",
+        "Comprehensive complete electric diagnostic",
       equipment: ["Video Inspection Scope", "Fuel Pump Testing Kit", "Oil Pressure Gauge"],
-      image: videoInspectionScopeDevice, // Image of related equipment
+      image: scanningDiagnosticTool, // Image of related equipment
     },
+
     {
-      name: "Brake Services",
+      name: "Diagnostic Mobile Workcenter",
       description:
-        "Precision brake repairs and maintenance, including pad replacement and rotor resurfacing.",
-      equipment: ["Brake Service Machine", "Vacuum Pump Testing Kit"],
-      image: brakeServiceMachine,
+        "Comprehensive complete electric diagnostic",
+      equipment: ["Video Inspection Scope", "Fuel Pump Testing Kit", "Oil Pressure Gauge"],
+      image: DiagnosticMobileWorkcenter, // Image of related equipment
     },
+
+    // duplicate
+    {
+      name: "Wheel Balancing",
+      description:
+        "Prevent vibrations for added safety on the road",
+      equipment: ["Video Inspection Scope", "Fuel Pump Testing Kit", "Oil Pressure Gauge"],
+      image: wheelBalancing, // Image of related equipment
+    },
+  
     {
       name: "Wheel Alignment & Suspension",
       description:
@@ -52,6 +67,13 @@ const OurServices = () => {
       image: batteryTestingMachine,
     },
     {
+      name: "Engine video inspection",
+      description:
+        "Comprehensive diagnostics and expert repairs to restore your engine's performance.",
+      equipment: ["Video Inspection Scope", "Fuel Pump Testing Kit", "Oil Pressure Gauge"],
+      image: videoInspectionScopeDevice, // Image of related equipment
+    },
+    {
       name: "Air Conditioning",
       description:
         "AC services, including recharging, leak detection, and performance maintenance for R134 and R1234yf systems.",
@@ -59,9 +81,16 @@ const OurServices = () => {
       image: acChargeMachineR1234yf,
     },
     {
-      name: "Oil Change & Fluids",
+      name: "Brake Services",
       description:
-        "Quick and efficient oil changes, along with fluid checks and top-ups to ensure optimal vehicle health.",
+        "Precision brake repairs and maintenance, including pad replacement and rotor resurfacing.",
+      equipment: ["Brake Service Machine", "Vacuum Pump Testing Kit"],
+      image: brakeServiceMachine,
+    },
+    {
+      name: "Engine and transmission oil pressure test",
+      description:
+        "Quick and efficient oil pressure verification.",
       equipment: ["Oil Pressure Gauge", "Fluid Pumps"],
       image: oilPressureGauge,
     },
@@ -73,7 +102,7 @@ const OurServices = () => {
       image: coolingSystemKit,
     },
     {
-      name: "Computerized Diagnostics & Tune-Up",
+      name: "TPM Sensor Test",
       description:
         "State-of-the-art computerized diagnostics and tune-ups to improve vehicle efficiency and resolve hidden issues.",
       equipment: ["OBD-II Scanner", "Tune-Up Tools"],
@@ -86,31 +115,31 @@ const OurServices = () => {
       equipment: ["Exhaust Pressure Testing Kit"],
       image: exhaustWeldingMachine,
     },
-    {
-      name: "Clutch Services",
-      description:
-        "Comprehensive clutch inspections, adjustments, and replacements to ensure smooth gear shifting and driving comfort.",
-      equipment: ["Clutch Alignment Tools", "Pressure Plate Testing Tools"],
-      image: oilPressureGauge,
-    },
-    {
-      name: "Traction Control & ABS",
-      description:
-        "Repair and maintenance of Anti-Lock Braking Systems (ABS) and traction control for enhanced safety and control.",
-      equipment: ["Brake Service Machine", "ABS Scanner"],
-      image: brakeServiceMachine,
-    },
-    {
-      name: "Lights & Electrical Systems",
-      description:
-        "Inspection, repair, and replacement of all vehicle lights and electrical components, including fuses and wiring.",
-      equipment: ["Electrical Testing Tools", "Lighting Fixtures"],
-      image: batteryTestingMachine,
-    },
+    // {
+    //   name: "Clutch Services",
+    //   description:
+    //     "Comprehensive clutch inspections, adjustments, and replacements to ensure smooth gear shifting and driving comfort.",
+    //   equipment: ["Clutch Alignment Tools", "Pressure Plate Testing Tools"],
+    //   image: oilPressureGauge,
+    // },
+    // {
+    //   name: "Traction Control & ABS",
+    //   description:
+    //     "Repair and maintenance of Anti-Lock Braking Systems (ABS) and traction control for enhanced safety and control.",
+    //   equipment: ["Brake Service Machine", "ABS Scanner"],
+    //   image: brakeServiceMachine,
+    // },
+    // {
+    //   name: "Lights & Electrical Systems",
+    //   description:
+    //     "Inspection, repair, and replacement of all vehicle lights and electrical components, including fuses and wiring.",
+    //   equipment: ["Electrical Testing Tools", "Lighting Fixtures"],
+    //   image: batteryTestingMachine,
+    // },
     {
       name: "Preventive Maintenance",
       description:
-        "General preventive maintenance to keep your car running smoothly, including belt, hose, and filter replacements.",
+        "General preventive maintenance to keep your car running smoothly, including fuil pump, fuil filter, and filter replacements.",
       equipment: ["Preventive Maintenance Kit"],
       image: fuelPumpTestingKit,
     },
