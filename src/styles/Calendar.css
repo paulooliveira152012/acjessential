@@ -504,8 +504,8 @@
   width: 100%;
   max-width: 1000px;
   margin: auto;
-  /* overflow-y: auto !important; */
-  height: 50vh;
+  overflow-y: auto;
+  height: 60vh;
 }
 
 .enterPassword {
