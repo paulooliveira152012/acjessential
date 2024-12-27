@@ -24,7 +24,7 @@ const AdmLogin = () => {
     event.preventDefault();
     setError(""); // Clear previous errors
 
-    const api = getApiUri("/api/admin/login")
+    const api = getApiUri("api/admin/login")
 
     try {
       const response = await axios.post(
