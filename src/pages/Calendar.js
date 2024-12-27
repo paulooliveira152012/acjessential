@@ -4,8 +4,10 @@ import "react-calendar/dist/Calendar.css"; // Calendar styling
 import "../styles/Calendar.css";
 import axios from "axios";
 import "../styles/style.css";
+import { useNavigate } from "react-router-dom";
 
 const CalendarPage = () => {
+  const navigate = useNavigate()
   const [selectedDate, setSelectedDate] = useState(null); // Initially no date is selected
   const [appointments, setAppointments] = useState([]); // State to store all appointments
   const [formData, setFormData] = useState({
@@ -428,6 +430,12 @@ const CalendarPage = () => {
     return <p>Access denied. This page is restricted to specific devices.</p>; // Access denied state
   }
 
+
+  const handleSignOut = () => {
+    localStorage.removeItem("admToken"); // Remove token from storage
+    navigate("/login"); // Navigate to login or home page
+  };
+
   return (
       <div
     className={`calendar-page ${
@@ -437,6 +445,11 @@ const CalendarPage = () => {
     }`}
   >
       <h1>Schedule Your Car Drop-Off</h1>
+
+      <button className="logoutBtn" onClick={handleSignOut}>
+        Log Out
+      </button>
+
       <div className="calendarContainer">
         <Calendar
           onChange={handleDateChange}

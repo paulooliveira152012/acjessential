@@ -249,6 +249,20 @@
   
 }
 
+.logoutBtn { 
+  /* background-color: red; */
+  font-family: montserrat;
+  width: 20%;
+  right: 0;
+  top: 0;
+  position: absolute;
+  color: red;
+  border: none;
+  border-radius: 20px;
+  padding: 5px;
+  margin: 10px;
+}
+
 .closeButton {
   font-size: 20px;
   font-weight: bold;
