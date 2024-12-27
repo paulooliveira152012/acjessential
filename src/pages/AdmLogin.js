@@ -15,7 +15,7 @@ const AdmLogin = () => {
   const getApiUri = (endpoint) => {
     const baseUrl =
       process.env.NODE_ENV === "production"
-        ? process.env.REACT_APP_API_URL
+        ? process.env.REACT_APP_API_URL || "https://acjessential.vercel.app"
         : "http://localhost:5001";
   
     // Remove any trailing slashes from baseUrl and leading slashes from endpoint
@@ -26,6 +26,10 @@ const AdmLogin = () => {
   const handleLogin = async (event) => {
     event.preventDefault();
     setError(""); // Clear previous errors
+
+    const apiEndpoint = getApiUri("/api/admin/login");
+    console.log("Generated API Endpoint:", apiEndpoint);
+
 
     const api = getApiUri("api/admin/login")
 
