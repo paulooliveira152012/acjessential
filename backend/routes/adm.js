@@ -55,7 +55,7 @@ router.get("/verify-token", (req, res) => {
       res.status(401).json({ message: "Invalid or expired token." });
     }
   });
-  
+
 
 // Admin login route
 router.post('/login', async (req, res) => {
@@ -103,7 +103,31 @@ router.post('/test-password', async (req, res) => {
     }
 });
 
+
+router.get("/validate-access", (req, res) => {
+    const clientIP = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
+  
+    const allowedIPs =
+      process.env.NODE_ENV === "production"
+        ? ["174.166.193.196", "2601:8c:4c80:5f70:94d4:d526:402e:b02c"]
+        : ["127.0.0.1", "::1"]; // Allow localhost in development
+    
+    console.log("Client IP:", clientIP);
+  
+    if (allowedIPs.includes(clientIP)) {
+      return res.status(200).json({ access: true, message: "Access granted." });
+    } else {
+      return res.status(403).json({ access: false, message: "Access denied. Invalid IP." });
+    }
+  });
+  
+  
+  
+
+
 module.exports = router;
+
+
 
 
 

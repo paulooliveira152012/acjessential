@@ -27,6 +27,7 @@ const CalendarPage = () => {
   const [enteredPassword, setEnteredPassword] = useState("");
   const [editAppointmentId, setEditAppointmentId] = useState(null);
   const [cancelingAppointmentId, setCancelingAppointmentId] = useState(null); // Track appointment for cancellation
+  const [accessGranted, setAccessGranted] = useState(null)
 
   const adminPassword = "12345"; // Replace with your actual password logic
 
@@ -37,6 +38,46 @@ const CalendarPage = () => {
     : "http://localhost:5001";
     return `${baseUrl}${endpoint}`
   }
+
+  useEffect(() => {
+    console.log("checking IP")
+    const checkAccess = async () => {
+      const api = getApiUrl("/api/admin/validate-access");
+
+      try {
+        const response = await axios.get(api);
+        console.log("response:", response)
+        if (response.data.access) {
+          setAccessGranted(true);
+          console.log("Access granted");
+        } else {
+          setAccessGranted(false);
+          console.log("Access denied");
+        }
+      } catch (error) {
+        console.error("Access validation failed:", error);
+        setAccessGranted(false); // Deny access if an error occurs
+      }
+    };
+
+    checkAccess();
+
+     // Render loading, access denied, or main content based on access state
+    // if (accessGranted === null) {
+    //   return <p>Loading...</p>; // Show loading state while validating access
+    // }
+
+    // Restrict access if not allowed
+    // if (!accessGranted) {
+    //   // return <p>Access denied. This page is restricted to specific devices.</p>;
+    //   console.log("not allowed")
+    // }
+
+    
+  }, []);
+  
+  
+
 
   const handleOpenPasswordModal = (id) => {
     setEditAppointmentId(id); // Save the ID of the appointment being edited
@@ -378,6 +419,14 @@ const CalendarPage = () => {
     setCancelingAppointmentId(id); // Save the ID of the appointment being canceled
     setIsPasswordModalVisible(true); // Show the password modal
   };
+
+  if (accessGranted === null) {
+    return <p>Loading...</p>; // Loading state
+  }
+  
+  if (!accessGranted) {
+    return <p>Access denied. This page is restricted to specific devices.</p>; // Access denied state
+  }
 
   return (
       <div
