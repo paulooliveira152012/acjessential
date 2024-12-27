@@ -14,8 +14,6 @@ const cors = require("cors");
 const allowedOrigins = [
   "https://acjessential-a07ou6a0j-paulo-oliveiras-projects-d0079d90.vercel.app",
   // this is the one activily serving
-  "https://acjbasic-c0c6f4c898a8.herokuapp.com",
-  "https://acjbasic-c38b14927499.herokuapp.com",
   "http://localhost:3000"
 ];
 

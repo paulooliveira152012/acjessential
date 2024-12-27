@@ -17,7 +17,8 @@ const AdmLogin = () => {
     process.env.NODE_ENV === "production"
     ? process.env.REACT_APP_API_URL
     : "http://localhost:5001"
-    return `${baseUrl}${endpoint}`;
+     // Remove any trailing slash from the baseUrl and leading slash from the endpoint
+  return `${baseUrl.replace(/\/+$/, "")}/${endpoint.replace(/^\/+/, "")}`;
   }
 
   const handleLogin = async (event) => {
