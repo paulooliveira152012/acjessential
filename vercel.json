@@ -1,0 +1,10 @@
+{
+    "redirects": [
+      {
+        "source": "/(.*)", 
+        "destination": "https://acjessential.vercel.app/$1", 
+        "permanent": true
+      }
+    ]
+  }
+  
