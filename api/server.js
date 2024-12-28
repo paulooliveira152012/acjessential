@@ -12,10 +12,9 @@ const adminRouter = require("./routes/adm");
 const cors = require("cors");
 
 const allowedOrigins = [
-  "https://acjessential-a07ou6a0j-paulo-oliveiras-projects-d0079d90.vercel.app",
-  // this is the one activily serving
-  "http://localhost:3000",
-  "*",
+  "https://acjessential.vercel.app", // Production URL
+  "https://acjessential-iwvvz1ket-paulo-oliveiras-projects-d0079d90.vercel.app", // Preview URL
+  "http://localhost:3000", // Local development
 ];
 
 const corsOptions = {
