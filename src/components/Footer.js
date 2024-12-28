@@ -73,14 +73,6 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* div 4 */}
-        <div>
-          <h3>Adm</h3>
-
-          <li style={{ listStyle: "none", marginTop: "12px" }}>
-            <Link to="/admLogin">login (Adm)</Link>
-          </li>
-        </div>
       </div>
       <div className="divLine"></div>
       <p>&copy; {currentYear} ACJ Auto Repair. All rights reserved.</p>
