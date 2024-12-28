@@ -11,24 +11,16 @@ const adminRouter = require("./routes/adm");
 // Import cors
 const cors = require("cors");
 
-const allowedOrigins = [
-  "https://acjessential.vercel.app", // Production URL
-  "https://acjessential-iwvvz1ket-paulo-oliveiras-projects-d0079d90.vercel.app", // Preview URL
-  "http://localhost:3000", // Local development
-];
 
+
+// Allow all origins
 const corsOptions = {
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true); // Allow the request
-    } else {
-      callback(new Error("Not allowed by CORS")); // Reject the request
-    }
-  },
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: true, // Allow cookies or other credentials
-  optionsSuccessStatus: 204,
+  origin: "*", // Allow all origins
+  credentials: false, // Credentials are not allowed when origin is "*"
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Specify allowed HTTP methods
+  optionsSuccessStatus: 204 // For legacy browsers
 };
+
 
 // serve frontend
 const path = require("path");
