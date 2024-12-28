@@ -16,11 +16,32 @@ const path = require("path");
 const app = express();
 
 // Allow all origins with CORS
-app.use(cors()); // Default CORS configuration allows all origins
+const corsOptions = {
+  origin: "https://acjessential-b3vqumrt6-paulo-oliveiras-projects-d0079d90.vercel.app", // Replace with your frontend URL
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true, // Include credentials if required
+};
+app.use(cors(corsOptions));
 console.log("CORS is enabled");
 
-// Enable preflight requests
-app.options("*", cors());
+// Handle preflight requests
+app.options("*", (req, res) => {
+  console.log("Preflight OPTIONS request received");
+  res.setHeader("Access-Control-Allow-Origin", "https://acjessential-b3vqumrt6-paulo-oliveiras-projects-d0079d90.vercel.app");
+  res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader("Access-Control-Allow-Credentials", "true"); // Add if credentials are needed
+  res.sendStatus(204); // No Content
+});
+
+
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+});
+
+
 
 // Use express for JSON
 app.use(express.json());
