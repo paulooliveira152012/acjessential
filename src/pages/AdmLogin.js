@@ -25,33 +25,25 @@ const AdmLogin = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    setError(""); // Clear previous errors
+    setError("");
 
     const apiEndpoint = getApiUri("/api/admin/login");
-    console.log("Generated API Endpoint:", apiEndpoint);
-
-
-    const api = getApiUri("api/admin/login")
 
     try {
-      const response = await axios.post(
-        api, {
-          username,
-          password,
-        });
+      const response = await axios.post(apiEndpoint, {
+        username,
+        password,
+      });
 
       const { token } = response.data;
-      console.log("Login successful, token:", token);
       setSuccess(true);
       localStorage.setItem("admToken", token);
       navigate("/calendar");
     } catch (err) {
-      console.error(
-        "Login failed:",
-        err.response?.data?.message || err.message
-      );
       setError(
-        err.response?.data?.message || "An error occurred during login."
+        err.response?.status === 401
+          ? "Invalid username or password."
+          : err.response?.data?.message || "An error occurred during login."
       );
     }
   };
