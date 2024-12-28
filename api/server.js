@@ -27,13 +27,24 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
+const allowedOrigins = [
+  "https://acjessential.vercel.app",
+  "https://acjessential-git-main-paulo-oliveiras-projects-d0079d90.vercel.app"
+];
+
 // Allow all origins with CORS
 const corsOptions = {
-  origin: true, // Replace with your frontend URL
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true, // Include credentials if required
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
 };
+
 app.use(cors(corsOptions));
 console.log("CORS is enabled");
 
