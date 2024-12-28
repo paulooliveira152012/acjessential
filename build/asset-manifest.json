@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.ccc52d5e.css",
-    "main.js": "/static/js/main.4448d762.js",
+    "main.js": "/static/js/main.c0c851ac.js",
     "static/js/453.743563ca.chunk.js": "/static/js/453.743563ca.chunk.js",
     "static/media/login.png": "/static/media/login.a94f44f44299db30d61a.png",
     "static/media/machine.png": "/static/media/machine.4460d182bd0e74945948.png",
@@ -38,11 +38,9 @@
     "static/media/ford.png": "/static/media/ford.1ee338ac7f433d42d1c1.png",
     "static/media/Fuel pump test.png": "/static/media/Fuel pump test.3528325de4ff64250a8a.png",
     "static/media/coolingSystemKit.png": "/static/media/coolingSystemKit.7f31a7894674d4e5750b.png",
-    "static/media/Vacuum pump test kit.png": "/static/media/Vacuum pump test kit.60905909d0c000f087ef.png",
     "static/media/AC charge machine R1234yf.png": "/static/media/AC charge machine R1234yf.41b4e66e5e1481ee8403.png",
     "static/media/engine.png": "/static/media/engine.4274fd492f7e7bf43dc0.png",
     "static/media/tesla.png": "/static/media/tesla.22d0f3a7135ed985f673.png",
-    "static/media/AC Charge machine R-134.png": "/static/media/AC Charge machine R-134.0deb99618f25ec86f414.png",
     "static/media/VW.jpeg": "/static/media/VW.c7b47a20a7b9f25975df.jpeg",
     "static/media/Exhaust welding machine titanium.png": "/static/media/Exhaust welding machine titanium.d23caf5cd1a6c0d1e009.png",
     "static/media/van.jpeg": "/static/media/van.d08c140c610aa2503704.jpeg",
@@ -54,7 +52,6 @@
     "static/media/video inspection scope.png": "/static/media/video inspection scope.70c903cdc26405ac9684.png",
     "static/media/MUSTANG.jpeg": "/static/media/MUSTANG.571f9d87a09781cc4ba3.jpeg",
     "static/media/tpm sensor machine.png": "/static/media/tpm sensor machine.6755484e6f7540740b40.png",
-    "static/media/nitrogenleaktest.png": "/static/media/nitrogenleaktest.96bd56a648151b3b3b38.png",
     "static/media/wheelBalancing.jpg": "/static/media/wheelBalancing.5e4c045bd3952caf7a50.jpg",
     "static/media/DiagnosticMobileWorkcenter.png": "/static/media/DiagnosticMobileWorkcenter.d0ea254c7eaa456c207d.png",
     "service-worker.js": "/service-worker.js",
@@ -62,11 +59,11 @@
     "static/media/logo_white.svg": "/static/media/logo_white.dfb5fb42297b57ca7b92ca70a15e9800.svg",
     "index.html": "/index.html",
     "main.ccc52d5e.css.map": "/static/css/main.ccc52d5e.css.map",
-    "main.4448d762.js.map": "/static/js/main.4448d762.js.map",
+    "main.c0c851ac.js.map": "/static/js/main.c0c851ac.js.map",
     "453.743563ca.chunk.js.map": "/static/js/453.743563ca.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ccc52d5e.css",
-    "static/js/main.4448d762.js"
+    "static/js/main.c0c851ac.js"
   ]
 }

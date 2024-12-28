@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
-import Footer from "../components/Footer";
 import "../styles/style.css";
-import blackLogo from "../assets/images/logo_black.svg";
 import PhoneIcon from "../assets/icons/footer/phone";
 import EnvelopIcon from "../assets/icons/footer/envelop";
 import LocationIcon from "../assets/icons/footer/location";
@@ -15,8 +13,7 @@ import LocationIconBlack from "../assets/icons/footer/locationBlack";
 
 const ContactUs = () => {
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 650);
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+
 
   // Handle screen resize
   useEffect(() => {
