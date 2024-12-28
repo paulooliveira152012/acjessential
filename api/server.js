@@ -4,58 +4,48 @@ const express = require("express");
 const mongoose = require("mongoose");
 // Import dotenv to use environment variables
 require("dotenv").config();
-// Import router
+// Import routers
 const appointmentRouter = require("./routes/appointments");
 const adminRouter = require("./routes/adm");
-
-// Import cors
+// Import cors for cross-origin requests
 const cors = require("cors");
-
-
-
-// Allow all origins
-const corsOptions = {
-  origin: "*", // Allow all origins
-  credentials: false, // Credentials are not allowed when origin is "*"
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Specify allowed HTTP methods
-  optionsSuccessStatus: 204 // For legacy browsers
-};
-
-
 // serve frontend
 const path = require("path");
 
 // Implement express
 const app = express();
 
-// Allow CORS
-app.use(cors(corsOptions));
+// Allow all origins with CORS
+app.use(cors()); // Default CORS configuration allows all origins
 console.log("CORS is enabled");
 
-app.options("*", cors(corsOptions)); // Enable preflight requests
+// Enable preflight requests
+app.options("*", cors());
 
-// Use express
+// Use express for JSON
 app.use(express.json());
 
-// MongoConnection
+// Connect to MongoDB
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Connected to MongoDb"))
   .catch((err) => console.log("Error connecting to MongoDB:", err));
 
+// Define API routes
 app.use("/api/appointments", appointmentRouter);
 app.use("/api/admin", adminRouter); // Routes for admin login
 
-// serve static files in production
+// Serve static files in production
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../build")));
 
-  // handle all other requests by serving the React frontend
+  // Handle all other requests by serving the React frontend
   app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "../build", "index.html"));
   });
 } else {
-  app.get("/", (req, res) => res.send("Wasn't able to find serving files"));
+  // Development fallback
+  app.get("/", (req, res) => res.send("Server running in development mode"));
 }
 
 // Start the server
