@@ -15,7 +15,7 @@ const AdmLogin = () => {
   const getApiUri = (endpoint) => {
     const baseUrl =
       process.env.NODE_ENV === "production"
-        ? process.env.REACT_APP_API_URL || "https://acjessential.vercel.app"
+        ? ""
         : "http://localhost:5001";
   
     // Remove any trailing slashes from baseUrl and leading slashes from endpoint

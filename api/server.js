@@ -17,9 +17,19 @@ const app = express();
 
 console.log("server reached")
 
+
+// Serve React static files
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../build")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../build", "index.html"));
+  });
+}
+
 // Allow all origins with CORS
 const corsOptions = {
-  origin: "https://acjessential-b3vqumrt6-paulo-oliveiras-projects-d0079d90.vercel.app", // Replace with your frontend URL
+  origin: true, // Replace with your frontend URL
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true, // Include credentials if required
@@ -73,4 +83,4 @@ if (process.env.NODE_ENV === "production") {
 
 // Start the server
 const PORT = process.env.PORT || 5001;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+module.exports = app;

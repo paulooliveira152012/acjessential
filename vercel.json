@@ -1,25 +1,6 @@
 {
-  "redirects": [],
   "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/api/:path*",
-      "headers": [
-        { "key": "Access-Control-Allow-Credentials", "value": "true" },
-        { "key": "Access-Control-Allow-Origin", "value": "https://acjessential-b3vqumrt6-paulo-oliveiras-projects-d0079d90.vercel.app" },
-        { "key": "Access-Control-Allow-Methods", "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT" },
-        { "key": "Access-Control-Allow-Headers", "value": "Content-Type, Authorization" }
-      ]
-    }
-  ],
-  "build": {
-    "env": {
-      "NODE_ENV": "production"
-    }
-  }
+    { "source": "/api/:path*", "destination": "/api/:path*" },
+    { "source": "/:path*", "destination": "/index.html" }
+  ]
 }
