@@ -15,6 +15,8 @@ const path = require("path");
 // Implement express
 const app = express();
 
+console.log("server reached")
+
 // Allow all origins with CORS
 const corsOptions = {
   origin: "https://acjessential-b3vqumrt6-paulo-oliveiras-projects-d0079d90.vercel.app", // Replace with your frontend URL
